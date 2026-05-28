@@ -864,17 +864,21 @@ class XVLA(PreTrainedModel):
     # =============================== FastAPI service =============================
     def _normalize_inference_proprio(self, proprio: np.ndarray) -> np.ndarray:
         stats = self.inference_normalization
+        real_dim = int(getattr(self.action_space, "real_dim", proprio.shape[-1]))
+        model_dim = int(getattr(self.action_space, "dim_action", real_dim))
         if not stats:
-            real_dim = int(getattr(self.action_space, "real_dim", proprio.shape[-1]))
-            return proprio.astype(np.float32)[..., :real_dim]
-        if stats.get("mode") != "mean_std":
-            raise ValueError(f"Unsupported inference normalization mode: {stats.get('mode')}")
-        real_dim = int(getattr(self.action_space, "real_dim", len(stats["mean"])))
-        mean = np.asarray(stats["mean"], dtype=np.float32)[:real_dim]
-        std = np.maximum(np.asarray(stats["std"], dtype=np.float32)[:real_dim], 1e-6)
-        x = proprio.astype(np.float32)[..., :real_dim].copy()
-        x = (x - mean) / std
-        return x
+            x = proprio.astype(np.float32)
+        else:
+            if stats.get("mode") != "mean_std":
+                raise ValueError(f"Unsupported inference normalization mode: {stats.get('mode')}")
+            mean = np.asarray(stats["mean"], dtype=np.float32)[:real_dim]
+            std = np.maximum(np.asarray(stats["std"], dtype=np.float32)[:real_dim], 1e-6)
+            x = proprio.astype(np.float32).copy()
+            x[..., :real_dim] = (x[..., :real_dim] - mean) / std
+        if x.shape[-1] >= model_dim:
+            return x[..., :model_dim]
+        pad = np.zeros((*x.shape[:-1], model_dim - x.shape[-1]), dtype=np.float32)
+        return np.concatenate([x, pad], axis=-1)
 
     def _unnormalize_inference_action(self, action: np.ndarray) -> np.ndarray:
         stats = self.inference_normalization

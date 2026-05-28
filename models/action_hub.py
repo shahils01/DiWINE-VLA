@@ -284,8 +284,6 @@ class AutoActionSpace(BaseActionSpace):
         super().__init__()
         self.real_dim = real_dim
         self.dim_action = max_dim  # Model-facing dimension
-        self.dim_propio = real_dim
-        self.dim_proprio = real_dim
         self.mse = nn.MSELoss()
 
     def _pad_to_model_dim(self, x: torch.Tensor) -> torch.Tensor:
@@ -310,17 +308,6 @@ class AutoActionSpace(BaseActionSpace):
     def _trim_to_real_dim(self, x: torch.Tensor) -> torch.Tensor:
         """Trim model output max_dim → real_dim."""
         return x[..., : self.real_dim]
-
-    def _to_real_dim(self, x: torch.Tensor) -> torch.Tensor:
-        """Trim/pad tensors that should stay in the real robot action space."""
-        if x is None:
-            return None
-        if x.size(-1) == self.real_dim:
-            return x
-        if x.size(-1) > self.real_dim:
-            return x[..., : self.real_dim]
-        pad_shape = list(x.shape[:-1]) + [self.real_dim - x.size(-1)]
-        return torch.cat([x, x.new_zeros(pad_shape)], dim=-1)
 
     def compute_loss(self, pred: torch.Tensor, target: torch.Tensor) -> dict[str, torch.Tensor]:
         """
@@ -348,9 +335,9 @@ class AutoActionSpace(BaseActionSpace):
 
     def preprocess(self, proprio: torch.Tensor, action: torch.Tensor, mode: str = "train"):
         """
-        Keep proprio in real_dim and pad action from real_dim to max_dim.
+        Pad action from real_dim to max_dim for the model.
         """
-        return self._to_real_dim(proprio), self._pad_to_model_dim(action)
+        return proprio, self._pad_to_model_dim(action)
 
     def postprocess(self, action: torch.Tensor) -> torch.Tensor:
         """
