@@ -865,14 +865,15 @@ class XVLA(PreTrainedModel):
     def _normalize_inference_proprio(self, proprio: np.ndarray) -> np.ndarray:
         stats = self.inference_normalization
         if not stats:
-            return proprio.astype(np.float32)
+            real_dim = int(getattr(self.action_space, "real_dim", proprio.shape[-1]))
+            return proprio.astype(np.float32)[..., :real_dim]
         if stats.get("mode") != "mean_std":
             raise ValueError(f"Unsupported inference normalization mode: {stats.get('mode')}")
         real_dim = int(getattr(self.action_space, "real_dim", len(stats["mean"])))
         mean = np.asarray(stats["mean"], dtype=np.float32)[:real_dim]
         std = np.maximum(np.asarray(stats["std"], dtype=np.float32)[:real_dim], 1e-6)
-        x = proprio.astype(np.float32).copy()
-        x[..., :real_dim] = (x[..., :real_dim] - mean) / std
+        x = proprio.astype(np.float32)[..., :real_dim].copy()
+        x = (x - mean) / std
         return x
 
     def _unnormalize_inference_action(self, action: np.ndarray) -> np.ndarray:
@@ -913,9 +914,18 @@ class XVLA(PreTrainedModel):
                     if isinstance(v, np.ndarray):
                         if v.ndim == 1:  # encoded bytes
                             v = cv2.imdecode(v, cv2.IMREAD_COLOR)
+                        if v.ndim == 4 and v.shape[0] == 1:
+                            v = v[0]
+                        if v.dtype != np.uint8:
+                            v = np.clip(v, 0, 255).astype(np.uint8)
                         images.append(Image.fromarray(v))
                     elif isinstance(v, (list, tuple)):
-                        images.append(Image.fromarray(np.array(v)))
+                        v = np.asarray(v)
+                        if v.ndim == 4 and v.shape[0] == 1:
+                            v = v[0]
+                        if v.dtype != np.uint8:
+                            v = np.clip(v, 0, 255).astype(np.uint8)
+                        images.append(Image.fromarray(v))
                     elif isinstance(v, str):
                         images.append(Image.open(v))
                 if not images:

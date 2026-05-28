@@ -1,0 +1,27 @@
+SO101 train  instructions:
+
+data collection:
+
+cd ~/shahil_ws/lerobot-datacollection
+./scripts/collect_large_dataset.sh
+
+you can edit the config file "so101_large_dataset.env" in config folder to deine a new task prompt.
+
+push to hf:
+
+hf auth login
+hf upload shahils/so101-large-v1     /home/i2r/shahil_ws/lerobot-datacollection/datasets     datasets     --type dataset
+
+pull from hf:
+
+hf download shahils/so101-large-v1 \
+    --repo-type dataset \
+    --local-dir /scratch/$USER/so101-large-v1
+
+build meta file:
+
+python tools/build_so101_lerobot_meta.py     --dataset_roots /scratch/$USER/so101-large-v1/datasets/so101_large_v1_*     --output /scratch/$USER/so101-large-v1/metas/so101_large_v1_meta.json
+
+run train:
+
+accelerate launch     --num_processes 2     --mixed_precision bf16     train.py     --models "2toINF/X-VLA-Pt"     --train_metas_path /scratch/$USER/so101-large-v1/metas/so101_large_v1_meta.json     --output_dir /scratch/$USER/DiWINE-VLA/runnings/so101_large_v1_smoke     --action_mode auto     --real_action_dim 6     --max_action_dim 20     --batch_size 32     --num_views 3     --num_workers 4     --iters 2000     --save_interval 500     --learning_rate 1e-5     --train_vlm_pre   --vlm_pre_train_start_step 0
