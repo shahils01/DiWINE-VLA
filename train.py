@@ -93,7 +93,7 @@ def get_args_parser():
 
     # Schedule
     parser.add_argument("--iters", type=int, default=600000)
-    parser.add_argument("--freeze_steps", type=int, default=60000)
+    parser.add_argument("--freeze_steps", type=int, default=0)
     parser.add_argument("--warmup_steps", type=int, default=2000)
     parser.add_argument("--use_cosine_decay", action="store_true", default=False)
     parser.add_argument("--min_lr_ratio", type=float, default=0.1)
