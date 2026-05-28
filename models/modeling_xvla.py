@@ -218,6 +218,7 @@ class XVLA(PreTrainedModel):
         self.num_actions: int = config.num_actions
         self.use_proprio: bool = config.use_proprio
         self.action_mode: str = config.action_mode.lower()
+        self.inference_normalization: dict | None = None
         # Action space (dimensions + hooks)
         if config.action_mode.lower() == "auto":
             self.action_space = build_action_space(
@@ -861,6 +862,32 @@ class XVLA(PreTrainedModel):
         return self.action_space.postprocess(action)
 
     # =============================== FastAPI service =============================
+    def _normalize_inference_proprio(self, proprio: np.ndarray) -> np.ndarray:
+        stats = self.inference_normalization
+        if not stats:
+            return proprio.astype(np.float32)
+        if stats.get("mode") != "mean_std":
+            raise ValueError(f"Unsupported inference normalization mode: {stats.get('mode')}")
+        real_dim = int(getattr(self.action_space, "real_dim", len(stats["mean"])))
+        mean = np.asarray(stats["mean"], dtype=np.float32)[:real_dim]
+        std = np.maximum(np.asarray(stats["std"], dtype=np.float32)[:real_dim], 1e-6)
+        x = proprio.astype(np.float32).copy()
+        x[..., :real_dim] = (x[..., :real_dim] - mean) / std
+        return x
+
+    def _unnormalize_inference_action(self, action: np.ndarray) -> np.ndarray:
+        stats = self.inference_normalization
+        if not stats:
+            return action.astype(np.float32)
+        if stats.get("mode") != "mean_std":
+            raise ValueError(f"Unsupported inference normalization mode: {stats.get('mode')}")
+        real_dim = int(getattr(self.action_space, "real_dim", len(stats["mean"])))
+        mean = np.asarray(stats["mean"], dtype=np.float32)[:real_dim]
+        std = np.maximum(np.asarray(stats["std"], dtype=np.float32)[:real_dim], 1e-6)
+        x = action.astype(np.float32).copy()
+        x[..., :real_dim] = x[..., :real_dim] * std + mean
+        return x
+
     def _build_app(self, processor):
         """
         Minimal FastAPI app for XVLA inference.
@@ -900,7 +927,9 @@ class XVLA(PreTrainedModel):
                     return JSONResponse({"error": "Processor returned incomplete inputs."}, status_code=400)
 
                 # Build proprio/domain tensors
-                proprio = torch.as_tensor(np.asarray(json_numpy.loads(payload["proprio"])))
+                proprio_np = np.asarray(json_numpy.loads(payload["proprio"]), dtype=np.float32)
+                proprio_np = self._normalize_inference_proprio(proprio_np)
+                proprio = torch.as_tensor(proprio_np)
                 domain_id = torch.tensor([int(payload["domain_id"])], dtype=torch.long)
 
                 # Align to model's device/dtype
@@ -922,6 +951,7 @@ class XVLA(PreTrainedModel):
                 # Inference
                 steps = int(payload.get("steps", 10))
                 action = self.generate_actions(**inputs, steps=steps).squeeze(0).float().cpu().numpy()
+                action = self._unnormalize_inference_action(action)
                 return JSONResponse({"action": action.tolist()})
 
             except Exception:

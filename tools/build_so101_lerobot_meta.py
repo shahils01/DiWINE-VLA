@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
+import numpy as np
 import pyarrow.parquet as pq
 
 
@@ -19,13 +20,15 @@ def read_tasks(dataset_root: Path) -> dict[int, str]:
     return {int(i): str(t) for i, t in zip(table["task_index"], table["task"])}
 
 
-def build_entries(dataset_root: Path) -> list[dict]:
+def build_entries(dataset_root: Path) -> tuple[list[dict], list[Path]]:
     tasks = read_tasks(dataset_root)
     episodes_path = dataset_root / "meta" / "episodes" / "chunk-000" / "file-000.parquet"
     episodes = pq.read_table(episodes_path).to_pylist()
     entries = []
+    data_paths = []
     for ep in episodes:
         data_path = dataset_root / "data" / f"chunk-{ep['data/chunk_index']:03d}" / f"file-{ep['data/file_index']:03d}.parquet"
+        data_paths.append(data_path)
         video_paths = {}
         for key in CAMERA_KEYS:
             chunk = ep[f"videos/{key}/chunk_index"]
@@ -43,7 +46,34 @@ def build_entries(dataset_root: Path) -> list[dict]:
                 "video_paths": video_paths,
             }
         )
-    return entries
+    return entries, data_paths
+
+
+def _flatten_column(table: dict, key: str) -> np.ndarray:
+    return np.asarray(table[key], dtype=np.float32)
+
+
+def compute_state_action_stats(data_paths: list[Path]) -> dict:
+    actions = []
+    states = []
+    for data_path in sorted(set(data_paths)):
+        table = pq.read_table(data_path, columns=["action", "observation.state"]).to_pydict()
+        actions.append(_flatten_column(table, "action"))
+        states.append(_flatten_column(table, "observation.state"))
+    action = np.concatenate(actions, axis=0)
+    state = np.concatenate(states, axis=0)
+    both = np.concatenate([action, state], axis=0)
+    mean = both.mean(axis=0)
+    std = both.std(axis=0)
+    std = np.maximum(std, 1e-6)
+    return {
+        "mode": "mean_std",
+        "keys": ["action", "observation.state"],
+        "mean": mean.astype(float).tolist(),
+        "std": std.astype(float).tolist(),
+        "min": both.min(axis=0).astype(float).tolist(),
+        "max": both.max(axis=0).astype(float).tolist(),
+    }
 
 
 def main() -> int:
@@ -54,13 +84,17 @@ def main() -> int:
     args = parser.parse_args()
 
     datalist = []
+    data_paths = []
     for root in args.dataset_roots:
-        datalist.extend(build_entries(Path(root).resolve()))
+        entries, paths = build_entries(Path(root).resolve())
+        datalist.extend(entries)
+        data_paths.extend(paths)
 
     meta = {
         "dataset_name": args.dataset_name,
         "robot_type": "so101",
         "camera_keys": CAMERA_KEYS,
+        "normalization": compute_state_action_stats(data_paths),
         "datalist": datalist,
     }
     output = Path(args.output)

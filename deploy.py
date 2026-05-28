@@ -29,6 +29,8 @@ def main():
                         help="Path to the pretrained XVLA model directory")
     parser.add_argument('--processor_path', type=str, default=None)
     parser.add_argument('--LoRA_path', type=str, default=None)
+    parser.add_argument("--normalization_meta_path", type=str, default=None,
+                        help="Optional SO101 DiWINE meta JSON. If set, normalize proprio and unnormalize actions at inference.")
     parser.add_argument("--output_dir", type=str, default="./logs",
                         help="Directory to save runtime info (info.json)")
     parser.add_argument("--device", type=str, default="cuda",
@@ -90,6 +92,14 @@ def main():
             ).to(device)
             
             print("✅ LoRA weights applied successfully.")
+
+        if args.normalization_meta_path is not None:
+            with open(args.normalization_meta_path, "r") as f:
+                norm_meta = json.load(f)
+            model.inference_normalization = norm_meta.get("normalization")
+            if model.inference_normalization is None:
+                raise ValueError(f"No normalization block found in {args.normalization_meta_path}")
+            print(f"✅ Inference normalization loaded from {args.normalization_meta_path}")
             
             
         print("✅ Model successfully loaded and moved to device.")

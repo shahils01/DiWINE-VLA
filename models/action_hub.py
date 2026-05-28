@@ -278,7 +278,7 @@ class AutoActionSpace(BaseActionSpace):
         max_dim: The model's output dimension for pretrained VLA compatibility
     """
 
-    JOINTS_SCALE = 100.0
+    JOINTS_SCALE = 1.0
 
     def __init__(self, real_dim: int, max_dim: int = 20):
         super().__init__()

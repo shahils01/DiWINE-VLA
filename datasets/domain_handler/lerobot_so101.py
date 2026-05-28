@@ -27,6 +27,22 @@ class SO101LeRobotHandler(DomainHandler):
     REAL_ACTION_DIM = 6
     MODEL_ACTION_DIM = 20
 
+    def _normalization_stats(self) -> tuple[np.ndarray, np.ndarray]:
+        stats = self.meta.get("normalization", {})
+        if stats.get("mode") != "mean_std":
+            mean = np.zeros(self.REAL_ACTION_DIM, dtype=np.float32)
+            std = np.ones(self.REAL_ACTION_DIM, dtype=np.float32)
+            return mean, std
+        mean = np.asarray(stats["mean"], dtype=np.float32)[: self.REAL_ACTION_DIM]
+        std = np.asarray(stats["std"], dtype=np.float32)[: self.REAL_ACTION_DIM]
+        return mean, np.maximum(std, 1e-6)
+
+    def _normalize_real_dims(self, x: np.ndarray) -> np.ndarray:
+        x = np.asarray(x, dtype=np.float32)
+        mean, std = self._normalization_stats()
+        x = x[..., : self.REAL_ACTION_DIM]
+        return (x - mean) / std
+
     def _pad20(self, x: np.ndarray) -> np.ndarray:
         x = np.asarray(x, dtype=np.float32)
         if x.shape[-1] >= self.MODEL_ACTION_DIM:
@@ -50,8 +66,8 @@ class SO101LeRobotHandler(DomainHandler):
         images = [read_video_to_frames(item["video_paths"][key]) for key in camera_keys]
         data = read_parquet(item["data_path"])
 
-        actions = self._pad20(np.asarray(data["action"], dtype=np.float32))
-        states = self._pad20(np.asarray(data["observation.state"], dtype=np.float32))
+        actions = self._pad20(self._normalize_real_dims(np.asarray(data["action"], dtype=np.float32)))
+        states = self._pad20(self._normalize_real_dims(np.asarray(data["observation.state"], dtype=np.float32)))
         T = min([len(actions), len(states), *(len(img) for img in images)])
         if T <= num_actions + 1:
             return
