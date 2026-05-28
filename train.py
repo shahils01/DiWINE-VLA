@@ -210,6 +210,9 @@ def update_group_lrs(optim, step, args):
         set_group_lr(optim, "future_heads", base["future_heads"])
     else:
         for name, base_lr in base.items():
+            if name == "vlm_pre":
+                set_group_lr(optim, name, 0.0)
+                continue
             new_lr = schedule(step, base_lr) if args.use_cosine_decay else base_lr
             set_group_lr(optim, name, new_lr)
 
