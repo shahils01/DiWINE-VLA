@@ -74,6 +74,9 @@ def get_args_parser():
     # I/O
     parser.add_argument("--models", type=str, required=True, help="Path or HF repo for pretrained XVLA")
     parser.add_argument("--output_dir", type=str, default="runnings", help="Directory to save checkpoints")
+    parser.add_argument("--action_mode", type=str, default=None, help="Override pretrained config action_mode.")
+    parser.add_argument("--real_action_dim", type=int, default=None, help="Override real action dim for action_mode=auto.")
+    parser.add_argument("--max_action_dim", type=int, default=None, help="Override max action dim for action_mode=auto.")
 
     # Data
     parser.add_argument("--train_metas_path", type=str, required=True, help="Path to training metadata")
@@ -249,7 +252,14 @@ def main(args):
     logger.info(f"Args: {args}")
 
     # Load model & processor
-    model = XVLA.from_pretrained(args.models)
+    model_kwargs = {}
+    if args.action_mode is not None:
+        model_kwargs["action_mode"] = args.action_mode
+    if args.real_action_dim is not None:
+        model_kwargs["real_action_dim"] = args.real_action_dim
+    if args.max_action_dim is not None:
+        model_kwargs["max_action_dim"] = args.max_action_dim
+    model = XVLA.from_pretrained(args.models, **model_kwargs)
     processor = XVLAProcessor.from_pretrained(args.models)
 
     # Iterable dataloader (don't wrap with prepare)
