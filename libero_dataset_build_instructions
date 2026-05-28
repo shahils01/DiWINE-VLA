@@ -1,0 +1,226 @@
+The shortest path now is: use X-VLA’s released LIBERO-format dataset if you do not need to reproduce preprocessing exactly.
+
+  cd /scratch/shahils/openpi
+
+  huggingface-cli download 2toINF/Libero-XVLA-format \
+    --repo-type dataset \
+    --local-dir /scratch/shahils/openpi/datasets/Libero-XVLA-format
+
+  That dataset is about 31 GB and is already in the layout X-VLA expects. The HF page shows X-VLA-style paths like libero_10/<task>_demo/demo_0.hdf5.
+
+  If you want to rebuild it yourself from your previous OpenVLA-cleaned data, the pipeline is:
+
+  1. Put LIBERO BDDL files where LIBERO can find them
+
+  Your saved BDDL path:
+
+  /scratch/shahils/openpi/third_party/libero/libero/libero/bddl_files
+
+  Make sure your LIBERO install resolves that path. From inside the LIBERO repo, this usually means:
+
+  export LIBERO_ROOT=/scratch/shahils/openpi/third_party/libero/libero
+
+  or, if get_libero_path("bddl_files") points somewhere else, symlink your saved files there.
+
+  2. Download or restore the original raw LIBERO HDF5 demos
+
+  BDDL files are only task definitions. You still need raw .hdf5 demos, e.g.
+
+  /scratch/shahils/openpi/third_party/libero/libero/datasets/libero_10/
+    KITCHEN_SCENE..._demo.hdf5
+
+  If these are missing, download LIBERO demos using the LIBERO repo/download instructions, then place them under:
+
+  /scratch/shahils/openpi/third_party/libero/libero/datasets/libero_10
+
+  3. Regenerate OpenVLA-cleaned demos
+
+  This is the step you already ran:
+
+  cd /path/to/openvla
+
+  python experiments/robot/libero/regenerate_libero_dataset.py \
+    --libero_task_suite libero_10 \
+    --libero_raw_data_dir /scratch/shahils/openpi/third_party/libero/libero/datasets/libero_10 \
+    --libero_target_dir /scratch/shahils/openpi/third_party/libero/libero/datasets/libero_10_no_noops
+
+  X-VLA’s own preprocessing note says they follow OpenVLA regeneration for higher image resolution and failed-rollout/no-op filtering.
+
+  4. Convert relative LIBERO actions to absolute EEF-6D X-VLA actions
+
+  X-VLA expects each trajectory HDF5 to contain:
+
+  abs_action_6d      # [T, 10] = xyz(3) + rot6d(6) + gripper(1)
+  language_instruction
+  agentview_rgb
+  eye_in_hand_rgb
+
+  The important part is abs_action_6d. X-VLA’s LIBERO handler reads f["abs_action_6d"], converts gripper to boolean, and uses observation_key from the meta JSON for image keys.
+
+  Create tools/build_libero_xvla.py inside your X-VLA checkout:
+
+  import argparse
+  import json
+  import os
+
+  import h5py
+  import numpy as np
+  import robosuite.utils.transform_utils as T
+  from libero.libero import benchmark, get_libero_path
+  from libero.libero.envs import OffScreenRenderEnv
+
+
+  def axis_angle_to_rot6d(axis_angle):
+      mat = T.quat2mat(T.axisangle2quat(axis_angle))
+      return mat[:, :2].reshape(-1)
+
+
+  def rel_actions_to_abs_6d(task, demo_data, actions):
+      task_bddl_file = os.path.join(
+          get_libero_path("bddl_files"),
+          task.problem_folder,
+          task.bddl_file,
+      )
+      env = OffScreenRenderEnv(
+          bddl_file_name=task_bddl_file,
+          camera_heights=256,
+          camera_widths=256,
+      )
+      env.seed(0)
+      env.reset()
+
+      states = demo_data["states"][()]
+      env.set_init_state(states[0])
+
+      for _ in range(10):
+          env.step(np.array([0, 0, 0, 0, 0, 0, -1]))
+
+      abs_actions = []
+      for action in actions:
+          env.step(action)
+          goal_pos = env.env.robots[0].controller.goal_pos
+          goal_ori = env.env.robots[0].controller.goal_ori
+          axis_angle = T.quat2axisangle(T.mat2quat(goal_ori))
+          rot6d = axis_angle_to_rot6d(axis_angle)
+          abs_actions.append(np.concatenate([goal_pos, rot6d, action[-1:]]))
+
+      env.close()
+      return np.asarray(abs_actions, dtype=np.float32)
+
+
+  def write_scalar_string(group, name, value):
+      group.create_dataset(name, data=np.bytes_(value))
+
+
+  def main():
+      parser = argparse.ArgumentParser()
+      parser.add_argument("--suite", default="libero_10")
+      parser.add_argument("--cleaned_dir", required=True)
+      parser.add_argument("--out_dir", required=True)
+      parser.add_argument("--meta_out", required=True)
+      args = parser.parse_args()
+
+      os.makedirs(args.out_dir, exist_ok=True)
+
+      benchmark_dict = benchmark.get_benchmark_dict()
+      task_suite = benchmark_dict[args.suite]()
+
+      datalist = []
+
+      for task_id in range(task_suite.n_tasks):
+          task = task_suite.get_task(task_id)
+          task_name = task.name
+          src_path = os.path.join(args.cleaned_dir, f"{task_name}_demo.hdf5")
+          task_out_dir = os.path.join(args.out_dir, args.suite, f"{task_name}_demo")
+          os.makedirs(task_out_dir, exist_ok=True)
+
+          with h5py.File(src_path, "r") as src:
+              demos = src["data"]
+              for demo_key in sorted(demos.keys(), key=lambda x: int(x.split("_")[1])):
+                  demo_idx = int(demo_key.split("_")[1])
+                  demo = demos[demo_key]
+                  actions = demo["actions"][()]
+                  abs_action_6d = rel_actions_to_abs_6d(task, demo, actions)
+
+                  out_path = os.path.join(task_out_dir, f"demo_{demo_idx}.hdf5")
+                  with h5py.File(out_path, "w") as out:
+                      out.create_dataset("abs_action_6d", data=abs_action_6d)
+                      out.create_dataset("agentview_rgb", data=demo["obs/agentview_rgb"][()])
+                      out.create_dataset("eye_in_hand_rgb", data=demo["obs/eye_in_hand_rgb"][()])
+                      write_scalar_string(out, "language_instruction", task.language)
+
+                  datalist.append(out_path)
+
+      meta = {
+          "dataset_name": "libero",
+          "robot_type": "libero",
+          "datalist": datalist,
+          "observation_key": ["agentview_rgb", "eye_in_hand_rgb"],
+          "language_instruction_key": "language_instruction",
+      }
+
+      with open(args.meta_out, "w") as f:
+          json.dump(meta, f, indent=2)
+
+      print(f"Wrote {len(datalist)} demos")
+      print(f"Meta: {args.meta_out}")
+
+
+  if __name__ == "__main__":
+      main()
+
+  Run it:
+
+  cd /path/to/X-VLA
+
+  python tools/build_libero_xvla.py \
+    --suite libero_10 \
+    --cleaned_dir /scratch/shahils/openpi/third_party/libero/libero/datasets/libero_10_no_noops \
+    --out_dir /scratch/shahils/openpi/datasets/Libero-XVLA-rebuilt \
+    --meta_out /scratch/shahils/openpi/datasets/Libero-XVLA-rebuilt/libero_10_meta.json
+
+  5. Sanity-check the meta file
+
+  python - <<'PY'
+  import json, h5py
+  meta = json.load(open("/scratch/shahils/openpi/datasets/Libero-XVLA-rebuilt/libero_10_meta.json"))
+  print(meta.keys())
+  print(len(meta["datalist"]))
+  p = meta["datalist"][0]
+  print(p)
+  with h5py.File(p, "r") as f:
+      print(list(f.keys()))
+      print(f["abs_action_6d"].shape)
+      print(f["agentview_rgb"].shape)
+      print(f["eye_in_hand_rgb"].shape)
+      print(f["language_instruction"][()])
+  PY
+
+  Expected:
+
+  abs_action_6d shape: [T, 10]
+  agentview_rgb shape: [T, 256, 256, 3]
+  eye_in_hand_rgb shape: [T, 256, 256, 3]
+
+  6. Train X-VLA with the rebuilt meta
+
+  accelerate launch \
+    --mixed_precision bf16 \
+    train.py \
+    --models 2toINF/X-VLA-Pt \
+    --train_metas_path /scratch/shahils/openpi/datasets/Libero-XVLA-rebuilt/libero_10_meta.json \
+    --learning_rate 1e-4 \
+    --learning_coef 0.1 \
+    --iters 50000 \
+    --freeze_steps 1000 \
+    --warmup_steps 2000
+
+  Key things you were missing:
+
+  - The meta file is just a JSON with dataset_name, robot_type, datalist, observation_key, and language_instruction_key.
+  - X-VLA does not train directly on OpenVLA’s grouped data/demo_i HDF5 layout.
+  - You need an abs_action_6d dataset per trajectory.
+  - BDDL files alone are not enough; the raw LIBERO demo HDF5s are required to regenerate/clean, and the cleaned demos are required to rebuild X-VLA-format files.
+
+  Sources: X-VLA README training/meta description, X-VLA LIBERO preprocessing note, X-VLA LiberoHandler, X-VLA dataset reader, and OpenVLA regenerate_libero_dataset.py.
+

@@ -1,0 +1,58 @@
+For CALVIN,
+  the usual path is to download the official CALVIN dataset, especially the ABC_D split that X-VLA reports using.
+
+  Use this on Palmetto:
+
+  cd /scratch/shahils/openpi/third_party
+
+  git clone --recurse-submodules https://github.com/mees/calvin.git
+
+  export CALVIN_ROOT=/scratch/shahils/openpi/third_party/calvin
+  cd $CALVIN_ROOT/dataset
+
+  # X-VLA Calvin checkpoint is trained on ABC_D, so use ABC
+  sh download_data.sh ABC
+
+  That should create something like:
+
+  /scratch/shahils/openpi/third_party/calvin/dataset/task_ABC_D/
+    training/
+    validation/
+
+  If you only want a tiny test download first:
+
+  cd /scratch/shahils/openpi/third_party/calvin/dataset
+  sh download_data.sh debug
+
+  Important: official CALVIN notes that older ABC/ABCD downloads had annotation and scene_info.npy fixes. If your downloaded script is current, it may already handle this, but if not, run:
+
+  cd /scratch/shahils/openpi/third_party/calvin/dataset/task_ABC_D
+
+  wget http://calvin.cs.uni-freiburg.de/scene_info_fix/task_ABC_D_scene_info.zip
+  unzip -o task_ABC_D_scene_info.zip
+  rm task_ABC_D_scene_info.zip
+
+  For X-VLA training, downloading CALVIN is only step 1. You still need either:
+
+  official CALVIN episodes -> X-VLA-compatible trajectory files -> meta JSON
+
+  or a custom X-VLA domain handler that reads CALVIN’s native episode format directly.
+
+  The expected X-VLA training command will eventually look like:
+
+  accelerate launch \
+    --mixed_precision bf16 \
+    train.py \
+    --models 2toINF/X-VLA-Pt \
+    --train_metas_path /scratch/shahils/openpi/datasets/calvin_abc_d_xvla/meta.json \
+    --learning_rate 1e-4 \
+    --learning_coef 0.1 \
+    --iters 50000 \
+    --freeze_steps 1000 \
+    --warmup_steps 2000
+
+  So: yes, download is straightforward with CALVIN’s official script, but unlike LIBERO I would not assume there is a ready-made X-VLA-format dataset unless you find one in the X-VLA issues. The split you
+  want for their Calvin model is ABC, producing task_ABC_D.
+
+  Sources: CALVIN official repo download instructions and X-VLA README/model listing for X-VLA-Calvin-ABC_D.
+
