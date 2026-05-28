@@ -101,6 +101,9 @@ def get_args_parser():
     parser.add_argument("--warmup_steps", type=int, default=2000)
     parser.add_argument("--use_cosine_decay", action="store_true", default=False)
     parser.add_argument("--min_lr_ratio", type=float, default=0.1)
+    parser.add_argument("--train_vlm_pre", action="store_true", default=False)
+    parser.add_argument("--vlm_pre_train_start_step", type=int, default=-1)
+    parser.add_argument("--vlm_pre_train_steps", type=int, default=-1)
 
     # Logging / saving
     parser.add_argument("--save_interval", type=int, default=50000)
@@ -203,6 +206,17 @@ def update_group_lrs(optim, step, args):
     }
     def schedule(step, base_lr):
         return linear_warmup_cosine(step, args.freeze_steps, args.warmup_steps, args.iters, base_lr, args.min_lr_ratio)
+
+    def should_train_vlm_pre() -> bool:
+        if not args.train_vlm_pre:
+            return False
+        start = args.vlm_pre_train_start_step if args.vlm_pre_train_start_step >= 0 else args.freeze_steps
+        if step < start:
+            return False
+        if args.vlm_pre_train_steps >= 0 and step >= start + args.vlm_pre_train_steps:
+            return False
+        return True
+
     if step < args.freeze_steps:
         set_group_lr(optim, "vlm_pre", 0.0)
         set_group_lr(optim, "vlm_post", base["vlm_post"])
@@ -212,7 +226,7 @@ def update_group_lrs(optim, step, args):
         set_group_lr(optim, "future_heads", base["future_heads"])
     else:
         for name, base_lr in base.items():
-            if name == "vlm_pre":
+            if name == "vlm_pre" and not should_train_vlm_pre():
                 set_group_lr(optim, name, 0.0)
                 continue
             new_lr = schedule(step, base_lr) if args.use_cosine_decay else base_lr
