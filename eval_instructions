@@ -2,7 +2,7 @@ To test X-VLA on Client:
 
 terminal 1: (run the X-VLA client)
 cd ~/shahil_ws/X-VLA
-python deploy.py     --model_path rssm_xvla_checkpoints/ckpt-10000     --processor_path rssm_xvla_checkpoints/ckpt-10000     --host 127.0.0.1     --port 8000     --output_dir logs/server_ckpt10000
+python deploy.py     --model_path future_xvla_checkpoints/ckpt-20000     --processor_path future_xvla_checkpoints/ckpt-20000     --host 127.0.0.1     --port 8000     --output_dir logs/server_ckpt10000
 
 terinal 2: (run the simulato client)
 
@@ -14,4 +14,4 @@ In lab PC (Titan)
 python libero_client.py     --task_suites libero_goal   --host node0412    --server_ip 127.0.0.1     --server_port 8000     --output_dir logs/ckpt10000_libero_smoke     --eval_time 1
 
 In Palmetto:
-python libero_client.py --task_suites libero_goal --server_ip node0412 --server_port 8000  --eval_time 1  --init_seed 0
+python libero_client.py --task_suites libero_spatial libero_goal libero_object libero_10 --server_ip node0391 --server_port 8000  # --eval_time 1  --init_seed 0

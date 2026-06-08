@@ -1,4 +1,23 @@
 run command:
-accelerate launch --num_processes 2 --mixed_precision bf16 train.py     --models 2toINF/X-VLA-Pt     --train_metas_path /scratch/shahils/openpi/datasets/Libero-XVLA-format/libero_meta.json     --output_dir /scratch/shahils/X-VLA/smol_rssm_xvla_checkpoints     --batch_size 12     --num_workers 4     --num_views 3     --learning_rate 1e-4     --iters 60000     --freeze_steps 60000     --warmup_steps 0     --save_interval 10000     --use_future_prediction     --future_offset_steps 1     --future_horizon_steps 30     --future_latent_dim 1024     --future_hidden_dim 1024     --future_nll_weight 0.5     --future_kl_weight 0.2     --num_future_samples 8
+accelerate launch --num_processes 4 --mixed_precision bf16 train.py \
+ --models 2toINF/X-VLA-Pt     \
+ --train_metas_path /scratch/shahils/openpi/datasets/Libero-XVLA-format/libero_meta.json \
+ --output_dir /scratch/shahils/X-VLA/future_xvla_pt_checkpoints \
+ --batch_size 12 \
+ --num_workers 4 \
+ --num_views 3 \
+ --learning_rate 1e-4 \
+ --iters 60000 \
+ --freeze_steps 1000 \
+ --warmup_steps 2000 \
+ --save_interval 5000 \
+ --use_future_prediction \
+ --future_offset_steps 1 \
+ --future_horizon_steps 30 \
+ --future_latent_dim 1024 \
+ --future_hidden_dim 1024 \
+ --future_nll_weight 0.5 \
+ --future_kl_weight 0.2 \
+ --num_future_samples 8 \
 
 

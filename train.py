@@ -90,7 +90,7 @@ def get_args_parser():
     # Optimizer
     parser.add_argument("--learning_rate", type=float, default=1e-4)
     parser.add_argument("--learning_coef", type=float, default=1.0, help="LR multiplier for soft prompts")
-    parser.add_argument("--weight_decay", type=float, default=0.0)
+    parser.add_argument("--weight_decay", type=float, default=0.01)
     parser.add_argument("--betas", type=float, nargs=2, default=(0.9, 0.95))
     parser.add_argument("--max_grad_norm", type=float, default=1.0)
 
