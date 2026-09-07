@@ -1,0 +1,4 @@
+Started: 2026-09-06T23:12:59-04:00
+Host: node0008.palmetto.clemson.edu
+[33m⚠️  Warning: 'huggingface-cli download' is deprecated. Use 'hf download' instead.[0m
+/scratch/shahils/openpi/datasets/Libero-XVLA-format

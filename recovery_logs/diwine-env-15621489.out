@@ -1,0 +1,1248 @@
+Started: 2026-09-06T22:51:32-04:00
+Host: node1637.palmetto.clemson.edu
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /scratch/shahils/conda_envs/diwine-vla-rebuild
+
+  added / updated specs:
+    - pip
+    - python=3.10
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2026.8.13  |       h06a4308_0         107 KB
+    libexpat-2.8.4             |       h7354ed3_0         128 KB
+    libffi-3.4.8               |       h06d3fd0_3         137 KB
+    libzlib-1.3.2              |       h47b2149_0          60 KB
+    ncurses-6.6                |       hfaaeb4e_0         893 KB
+    openssl-3.5.8              |       h1b28b03_0         5.5 MB
+    packaging-26.3             |  py310h06a4308_0         329 KB
+    pip-26.2.1                 |     pyhc872135_0         1.1 MB
+    pthread-stubs-0.3          |       h47b2149_2           7 KB
+    python-3.10.21             |       h17756b0_0        24.4 MB
+    setuptools-83.0.0          |  py310h06a4308_0         1.2 MB
+    sqlite-3.53.2              |       h795bf6d_0         1.2 MB
+    tzdata-2026c               |       he532380_0         117 KB
+    wheel-0.47.0               |  py310h06a4308_0          56 KB
+    xorg-libx11-1.8.13         |       h65de747_0         817 KB
+    xorg-xorgproto-2025.1      |       h47b2149_0         555 KB
+    zlib-1.3.2                 |       h47b2149_0          92 KB
+    ------------------------------------------------------------
+                                           Total:        36.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-52_gnu 
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6 
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2026.8.13-h06a4308_0 
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.44-h9e0c5a2_3 
+  libexpat           pkgs/main/linux-64::libexpat-2.8.4-h7354ed3_0 
+  libffi             pkgs/main/linux-64::libffi-3.4.8-h06d3fd0_3 
+  libgcc             pkgs/main/linux-64::libgcc-15.2.0-h69a1729_8 
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-15.2.0-h166f726_8 
+  libnsl             pkgs/main/linux-64::libnsl-2.0.0-h5eee18b_0 
+  libstdcxx          pkgs/main/linux-64::libstdcxx-15.2.0-h39759b7_8 
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0 
+  libxcb             pkgs/main/linux-64::libxcb-1.17.0-h9b100fa_0 
+  libzlib            pkgs/main/linux-64::libzlib-1.3.2-h47b2149_0 
+  ncurses            pkgs/main/linux-64::ncurses-6.6-hfaaeb4e_0 
+  openssl            pkgs/main/linux-64::openssl-3.5.8-h1b28b03_0 
+  packaging          pkgs/main/linux-64::packaging-26.3-py310h06a4308_0 
+  pip                pkgs/main/noarch::pip-26.2.1-pyhc872135_0 
+  pthread-stubs      pkgs/main/linux-64::pthread-stubs-0.3-h47b2149_2 
+  python             pkgs/main/linux-64::python-3.10.21-h17756b0_0 
+  readline           pkgs/main/linux-64::readline-8.3-hc2a1206_0 
+  setuptools         pkgs/main/linux-64::setuptools-83.0.0-py310h06a4308_0 
+  sqlite             pkgs/main/linux-64::sqlite-3.53.2-h795bf6d_0 
+  tk                 pkgs/main/linux-64::tk-8.6.15-h54e0aa7_0 
+  tzdata             pkgs/main/noarch::tzdata-2026c-he532380_0 
+  wheel              pkgs/main/linux-64::wheel-0.47.0-py310h06a4308_0 
+  xorg-libx11        pkgs/main/linux-64::xorg-libx11-1.8.13-h65de747_0 
+  xorg-libxau        pkgs/main/linux-64::xorg-libxau-1.0.12-h9b100fa_0 
+  xorg-libxdmcp      pkgs/main/linux-64::xorg-libxdmcp-1.1.5-h9b100fa_0 
+  xorg-xorgproto     pkgs/main/linux-64::xorg-xorgproto-2025.1-h47b2149_0 
+  xz                 pkgs/main/linux-64::xz-5.8.2-h448239c_0 
+  zlib               pkgs/main/linux-64::zlib-1.3.2-h47b2149_0 
+
+
+
+Downloading and Extracting Packages
+libexpat-2.8.4       | 128 KB    |            |   0% 
+libffi-3.4.8         | 137 KB    |            |   0% [A
+
+zlib-1.3.2           | 92 KB     |            |   0% [A[A
+
+
+libzlib-1.3.2        | 60 KB     |            |   0% [A[A[A
+
+
+
+ncurses-6.6          | 893 KB    |            |   0% [A[A[A[A
+
+
+
+
+pthread-stubs-0.3    | 7 KB      |            |   0% [A[A[A[A[A
+
+
+
+
+
+sqlite-3.53.2        | 1.2 MB    |            |   0% [A[A[A[A[A[A
+
+
+
+
+
+
+xorg-xorgproto-2025. | 555 KB    |            |   0% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+packaging-26.3       | 329 KB    |            |   0% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+xorg-libx11-1.8.13   | 817 KB    |            |   0% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+setuptools-83.0.0    | 1.2 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.5.8        | 5.5 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+pip-26.2.1           | 1.1 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+ca-certificates-2026 | 107 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+tzdata-2026c         | 117 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+wheel-0.47.0         | 56 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python-3.10.21       | 24.4 MB   |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+libffi-3.4.8         | 137 KB    | #1         |  12% [Alibexpat-2.8.4       | 128 KB    | #2         |  13% 
+
+
+libzlib-1.3.2        | 60 KB     | ##6        |  27% [A[A[A
+
+zlib-1.3.2           | 92 KB     | #7         |  17% [A[A
+
+
+
+ncurses-6.6          | 893 KB    | 1          |   2% [A[A[A[A
+
+
+
+
+pthread-stubs-0.3    | 7 KB      | ########## | 100% [A[A[A[A[A
+
+
+
+
+
+sqlite-3.53.2        | 1.2 MB    | 1          |   1% [A[A[A[A[A[A
+
+
+
+
+
+
+xorg-xorgproto-2025. | 555 KB    | 2          |   3% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+packaging-26.3       | 329 KB    | 4          |   5% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+xorg-libx11-1.8.13   | 817 KB    | 1          |   2% [A[A[A[A[A[A[A[A[A
+
+
+
+ncurses-6.6          | 893 KB    | #########1 |  91% [A[A[A[A
+
+
+
+
+
+
+
+
+
+setuptools-83.0.0    | 1.2 MB    | 1          |   1% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.5.8        | 5.5 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+ca-certificates-2026 | 107 KB    | #4         |  15% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+pip-26.2.1           | 1.1 MB    | 1          |   1% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+libzlib-1.3.2        | 60 KB     | ########## | 100% [A[A[A
+
+
+libzlib-1.3.2        | 60 KB     | ########## | 100% [A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+tzdata-2026c         | 117 KB    | #3         |  14% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+wheel-0.47.0         | 56 KB     | ##8        |  28% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python-3.10.21       | 24.4 MB   |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.5.8        | 5.5 MB    | ####2      |  42% [A[A[A[A[A[A[A[A[A[A[A
+
+zlib-1.3.2           | 92 KB     | ########## | 100% [A[A
+
+zlib-1.3.2           | 92 KB     | ########## | 100% [A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python-3.10.21       | 24.4 MB   | ##3        |  24% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+pthread-stubs-0.3    | 7 KB      | ########## | 100% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python-3.10.21       | 24.4 MB   | ####8      |  48% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[Alibexpat-2.8.4       | 128 KB    | ########## | 100% libexpat-2.8.4       | 128 KB    | ########## | 100% 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python-3.10.21       | 24.4 MB   | #######2   |  72% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python-3.10.21       | 24.4 MB   | #########6 |  96% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+packaging-26.3       | 329 KB    | ########## | 100% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+packaging-26.3       | 329 KB    | ########## | 100% [A[A[A[A[A[A[A[A
+libffi-3.4.8         | 137 KB    | ########## | 100% [A
+libffi-3.4.8         | 137 KB    | ########## | 100% [A
+
+
+
+
+
+sqlite-3.53.2        | 1.2 MB    | ########## | 100% [A[A[A[A[A[A
+
+
+
+
+
+sqlite-3.53.2        | 1.2 MB    | ########## | 100% [A[A[A[A[A[A
+
+
+
+
+
+
+xorg-xorgproto-2025. | 555 KB    | ########## | 100% [A[A[A[A[A[A[A
+
+
+
+
+
+
+xorg-xorgproto-2025. | 555 KB    | ########## | 100% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+ca-certificates-2026 | 107 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+ca-certificates-2026 | 107 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+xorg-libx11-1.8.13   | 817 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+xorg-libx11-1.8.13   | 817 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+pip-26.2.1           | 1.1 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+pip-26.2.1           | 1.1 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+setuptools-83.0.0    | 1.2 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+setuptools-83.0.0    | 1.2 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+wheel-0.47.0         | 56 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+wheel-0.47.0         | 56 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.5.8        | 5.5 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.5.8        | 5.5 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+tzdata-2026c         | 117 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+tzdata-2026c         | 117 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+ncurses-6.6          | 893 KB    | ########## | 100% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python-3.10.21       | 24.4 MB   | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A                                                     
+                                                     [A
+
+                                                     [A[A
+
+
+                                                     [A[A[A
+
+
+
+                                                     [A[A[A[A
+
+
+
+
+                                                     [A[A[A[A[A
+
+
+
+
+
+                                                     [A[A[A[A[A[A
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment on Palmetto, use
+#
+#     $ source activate /scratch/shahils/conda_envs/diwine-vla-rebuild
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Requirement already satisfied: pip in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (26.2.1)
+Looking in indexes: https://download.pytorch.org/whl/cu124
+Collecting torch==2.6.0
+  Downloading torch-2.6.0%2Bcu124-cp310-cp310-linux_x86_64.whl.metadata (28 kB)
+Collecting torchvision==0.21.0
+  Downloading torchvision-0.21.0%2Bcu124-cp310-cp310-linux_x86_64.whl.metadata (6.1 kB)
+Collecting filelock (from torch==2.6.0)
+  Downloading filelock-3.32.3-py3-none-any.whl.metadata (2.0 kB)
+Collecting typing-extensions>=4.10.0 (from torch==2.6.0)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting networkx (from torch==2.6.0)
+  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting jinja2 (from torch==2.6.0)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec (from torch==2.6.0)
+  Downloading fsspec-2026.7.0-py3-none-any.whl.metadata (10 kB)
+Collecting nvidia-cuda-nvrtc-cu12==12.4.127 (from torch==2.6.0)
+  Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (24.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.6/24.6 MB 66.3 MB/s  0:00:00
+Collecting nvidia-cuda-runtime-cu12==12.4.127 (from torch==2.6.0)
+  Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (883 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.7/883.7 kB 156.3 MB/s  0:00:00
+Collecting nvidia-cuda-cupti-cu12==12.4.127 (from torch==2.6.0)
+  Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (13.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 113.1 MB/s  0:00:00
+Collecting nvidia-cudnn-cu12==9.1.0.70 (from torch==2.6.0)
+  Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 664.8/664.8 MB 100.5 MB/s  0:00:05
+Collecting nvidia-cublas-cu12==12.4.5.8 (from torch==2.6.0)
+  Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl (363.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 363.4/363.4 MB 73.1 MB/s  0:00:04
+Collecting nvidia-cufft-cu12==11.2.1.3 (from torch==2.6.0)
+  Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl (211.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.5/211.5 MB 72.7 MB/s  0:00:02
+Collecting nvidia-curand-cu12==10.3.5.147 (from torch==2.6.0)
+  Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl (56.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.3/56.3 MB 58.0 MB/s  0:00:00
+Collecting nvidia-cusolver-cu12==11.6.1.9 (from torch==2.6.0)
+  Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl (127.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.9/127.9 MB 78.0 MB/s  0:00:01
+Collecting nvidia-cusparse-cu12==12.3.1.170 (from torch==2.6.0)
+  Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl (207.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.5/207.5 MB 77.8 MB/s  0:00:02
+Collecting nvidia-cusparselt-cu12==0.6.2 (from torch==2.6.0)
+  Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl (150.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 150.1/150.1 MB 80.4 MB/s  0:00:01
+Collecting nvidia-nccl-cu12==2.21.5 (from torch==2.6.0)
+  Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl (188.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 188.7/188.7 MB 71.6 MB/s  0:00:02
+Collecting nvidia-nvtx-cu12==12.4.127 (from torch==2.6.0)
+  Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (99 kB)
+Collecting nvidia-nvjitlink-cu12==12.4.127 (from torch==2.6.0)
+  Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (21.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.1/21.1 MB 93.1 MB/s  0:00:00
+Collecting triton==3.2.0 (from torch==2.6.0)
+  Downloading triton-3.2.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (1.4 kB)
+Collecting sympy==1.13.1 (from torch==2.6.0)
+  Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+Collecting numpy (from torchvision==0.21.0)
+  Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision==0.21.0)
+  Downloading pillow-12.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy==1.13.1->torch==2.6.0)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch==2.6.0)
+  Downloading markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Downloading torch-2.6.0%2Bcu124-cp310-cp310-linux_x86_64.whl (768.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 768.4/768.4 MB 58.3 MB/s  0:00:10
+Downloading torchvision-0.21.0%2Bcu124-cp310-cp310-linux_x86_64.whl (7.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.3/7.3 MB 51.7 MB/s  0:00:00
+Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 38.1 MB/s  0:00:00
+Downloading triton-3.2.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (166.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 166.6/166.6 MB 63.9 MB/s  0:00:02
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 7.4 MB/s  0:00:00
+Downloading pillow-12.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 27.0 MB/s  0:00:00
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading filelock-3.32.3-py3-none-any.whl (98 kB)
+Downloading fsspec-2026.7.0-py3-none-any.whl (206 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (20 kB)
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 8.6 MB/s  0:00:00
+Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 5.2 MB/s  0:00:03
+Installing collected packages: triton, nvidia-cusparselt-cu12, mpmath, typing-extensions, sympy, pillow, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, MarkupSafe, fsspec, filelock, nvidia-cusparse-cu12, nvidia-cudnn-cu12, jinja2, nvidia-cusolver-cu12, torch, torchvision
+
+Successfully installed MarkupSafe-3.0.3 filelock-3.32.3 fsspec-2026.7.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.4.2 numpy-2.2.6 nvidia-cublas-cu12-12.4.5.8 nvidia-cuda-cupti-cu12-12.4.127 nvidia-cuda-nvrtc-cu12-12.4.127 nvidia-cuda-runtime-cu12-12.4.127 nvidia-cudnn-cu12-9.1.0.70 nvidia-cufft-cu12-11.2.1.3 nvidia-curand-cu12-10.3.5.147 nvidia-cusolver-cu12-11.6.1.9 nvidia-cusparse-cu12-12.3.1.170 nvidia-cusparselt-cu12-0.6.2 nvidia-nccl-cu12-2.21.5 nvidia-nvjitlink-cu12-12.4.127 nvidia-nvtx-cu12-12.4.127 pillow-12.3.0 sympy-1.13.1 torch-2.6.0+cu124 torchvision-0.21.0+cu124 triton-3.2.0 typing-extensions-4.16.0
+Collecting av==15.0.0 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 1))
+  Downloading av-15.0.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (4.6 kB)
+Collecting transformers<=4.51.3 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 2))
+  Downloading transformers-4.51.3-py3-none-any.whl.metadata (38 kB)
+Collecting fastapi (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading fastapi-0.141.1-py3-none-any.whl.metadata (27 kB)
+Collecting tensorboard (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4))
+  Downloading tensorboard-2.21.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting peft==0.17.1 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5))
+  Downloading peft-0.17.1-py3-none-any.whl.metadata (14 kB)
+Collecting uvicorn==0.34.3 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 6))
+  Downloading uvicorn-0.34.3-py3-none-any.whl.metadata (6.5 kB)
+Collecting json_numpy==2.1.0 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 7))
+  Downloading json_numpy-2.1.0-py3-none-any.whl.metadata (5.5 kB)
+Collecting safetensors==0.4.5 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 8))
+  Downloading safetensors-0.4.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.8 kB)
+Collecting numpy==1.26.3 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 9))
+  Downloading numpy-1.26.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting scipy==1.15.0 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 10))
+  Downloading scipy-1.15.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting einops==0.8.1 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 11))
+  Downloading einops-0.8.1-py3-none-any.whl.metadata (13 kB)
+Collecting timm==1.0.12 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 12))
+  Downloading timm-1.0.12-py3-none-any.whl.metadata (51 kB)
+Collecting mmengine==0.10.5 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading mmengine-0.10.5-py3-none-any.whl.metadata (20 kB)
+Collecting pyarrow==20.0.0 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 14))
+  Downloading pyarrow-20.0.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+Collecting h5py==3.12.1 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 15))
+  Downloading h5py-3.12.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+Collecting accelerate==1.2.1 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 16))
+  Downloading accelerate-1.2.1-py3-none-any.whl.metadata (19 kB)
+Collecting mediapy==1.2.4 (from -r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading mediapy-1.2.4-py3-none-any.whl.metadata (4.8 kB)
+Requirement already satisfied: packaging>=20.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (26.3)
+Collecting psutil (from peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5))
+  Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+Collecting pyyaml (from peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5))
+  Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Requirement already satisfied: torch>=1.13.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (2.6.0+cu124)
+Collecting tqdm (from peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5))
+  Downloading tqdm-4.70.0-py3-none-any.whl.metadata (57 kB)
+Collecting huggingface_hub>=0.25.0 (from peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5))
+  Downloading huggingface_hub-1.30.0-py3-none-any.whl.metadata (16 kB)
+Collecting click>=7.0 (from uvicorn==0.34.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 6))
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn==0.34.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 6))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: typing-extensions>=4.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from uvicorn==0.34.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 6)) (4.16.0)
+Requirement already satisfied: torchvision in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from timm==1.0.12->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 12)) (0.21.0+cu124)
+Collecting addict (from mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading addict-2.4.0-py3-none-any.whl.metadata (1.0 kB)
+Collecting matplotlib (from mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading matplotlib-3.10.9-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (52 kB)
+Collecting rich (from mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting termcolor (from mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading termcolor-3.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting yapf (from mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading yapf-0.43.0-py3-none-any.whl.metadata (46 kB)
+Collecting opencv-python>=3 (from mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading opencv_python-5.0.0.93-cp37-abi3-manylinux_2_28_x86_64.whl.metadata (19 kB)
+Collecting ipython (from mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading ipython-8.39.0-py3-none-any.whl.metadata (5.1 kB)
+Requirement already satisfied: Pillow in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17)) (12.3.0)
+Requirement already satisfied: filelock in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from transformers<=4.51.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 2)) (3.32.3)
+Collecting huggingface_hub>=0.25.0 (from peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5))
+  Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+Collecting regex!=2019.12.17 (from transformers<=4.51.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 2))
+  Downloading regex-2026.9.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting requests (from transformers<=4.51.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 2))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting tokenizers<0.22,>=0.21 (from transformers<=4.51.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 2))
+  Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Requirement already satisfied: fsspec>=2023.5.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from huggingface_hub>=0.25.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (2026.7.0)
+Collecting hf-xet<2.0.0,>=1.1.3 (from huggingface_hub>=0.25.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5))
+  Downloading hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Collecting starlette>=0.46.0 (from fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading starlette-1.6.0-py3-none-any.whl.metadata (6.4 kB)
+Collecting pydantic>=2.9.0 (from fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting absl-py>=0.4 (from tensorboard->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4))
+  Downloading absl_py-2.5.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting grpcio<2.0,>=1.74.0 (from tensorboard->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4))
+  Downloading grpcio-1.83.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
+Collecting markdown>=2.6.8 (from tensorboard->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4))
+  Downloading markdown-3.10.3-py3-none-any.whl.metadata (5.1 kB)
+Collecting protobuf<8.0.0,>=6.31.1 (from tensorboard->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4))
+  Downloading protobuf-7.36.1-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+Requirement already satisfied: setuptools>=41.0.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from tensorboard->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4)) (83.0.0)
+Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tensorboard->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4))
+  Downloading tensorboard_data_server-0.7.2-py3-none-any.whl.metadata (1.1 kB)
+Collecting werkzeug>=1.0.1 (from tensorboard->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4))
+  Downloading werkzeug-3.1.8-py3-none-any.whl.metadata (4.0 kB)
+INFO: pip is looking at multiple versions of opencv-python to determine which version is compatible with other requirements. This could take a while.
+Collecting opencv-python>=3 (from mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading opencv_python-4.14.0.94-cp37-abi3-manylinux_2_28_x86_64.whl.metadata (19 kB)
+  Downloading opencv_python-4.13.0.92-cp37-abi3-manylinux_2_28_x86_64.whl.metadata (19 kB)
+  Downloading opencv_python-4.13.0.90-cp37-abi3-manylinux_2_28_x86_64.whl.metadata (19 kB)
+  Downloading opencv_python-4.12.0.88-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (19 kB)
+  Downloading opencv_python-4.11.0.86-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.46.5 (from pydantic>=2.9.0->fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading pydantic_core-2.46.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+Collecting anyio<5,>=3.6.2 (from starlette>=0.46.0->fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting exceptiongroup>=1.0.2 (from anyio<5,>=3.6.2->starlette>=0.46.0->fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+Collecting idna>=2.8 (from anyio<5,>=3.6.2->starlette>=0.46.0->fastapi->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 3))
+  Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+Requirement already satisfied: networkx in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (3.4.2)
+Requirement already satisfied: jinja2 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (3.1.6)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (12.3.1.170)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (0.6.2)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (3.2.0)
+Requirement already satisfied: sympy==1.13.1 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from sympy==1.13.1->torch>=1.13.0->peft==0.17.1->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 5)) (1.3.0)
+Requirement already satisfied: markupsafe>=2.1.1 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from werkzeug>=1.0.1->tensorboard->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 4)) (3.0.3)
+Collecting decorator (from ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading decorator-5.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting jedi>=0.16 (from ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading jedi-0.20.0-py2.py3-none-any.whl.metadata (23 kB)
+Collecting matplotlib-inline (from ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading matplotlib_inline-0.2.2-py3-none-any.whl.metadata (2.4 kB)
+Collecting pexpect>4.3 (from ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting prompt_toolkit<3.1.0,>=3.0.41 (from ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading prompt_toolkit-3.0.53-py3-none-any.whl.metadata (6.4 kB)
+Collecting pygments>=2.4.0 (from ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting stack_data (from ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading stack_data-0.6.3-py3-none-any.whl.metadata (18 kB)
+Collecting traitlets>=5.13.0 (from ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading traitlets-5.16.1-py3-none-any.whl.metadata (10 kB)
+Collecting wcwidth>=0.1.4 (from prompt_toolkit<3.1.0,>=3.0.41->ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading wcwidth-0.8.3-py3-none-any.whl.metadata (43 kB)
+Collecting parso<0.9.0,>=0.8.6 (from jedi>=0.16->ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading parso-0.8.7-py2.py3-none-any.whl.metadata (8.2 kB)
+Collecting ptyprocess>=0.5 (from pexpect>4.3->ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading ptyprocess-0.7.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting contourpy>=1.0.1 (from matplotlib->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading fonttools-4.64.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (123 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading kiwisolver-1.5.1-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (5.2 kB)
+Collecting pyparsing>=3 (from matplotlib->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting python-dateutil>=2.7 (from matplotlib->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting charset_normalizer<4,>=2 (from requests->transformers<=4.51.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 2))
+  Downloading charset_normalizer-3.5.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (45 kB)
+Collecting urllib3<3,>=1.26 (from requests->transformers<=4.51.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 2))
+  Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2023.5.7 (from requests->transformers<=4.51.3->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 2))
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting markdown-it-py>=2.2.0 (from rich->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting executing>=1.2.0 (from stack_data->ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading executing-2.2.1-py2.py3-none-any.whl.metadata (8.9 kB)
+Collecting asttokens>=2.1.0 (from stack_data->ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading asttokens-3.0.2-py3-none-any.whl.metadata (5.7 kB)
+Collecting pure-eval (from stack_data->ipython->mediapy==1.2.4->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 17))
+  Downloading pure_eval-0.2.3-py3-none-any.whl.metadata (6.3 kB)
+Collecting platformdirs>=3.5.1 (from yapf->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading platformdirs-4.11.7-py3-none-any.whl.metadata (5.5 kB)
+Collecting tomli>=2.0.1 (from yapf->mmengine==0.10.5->-r /scratch/shahils/DiWINE-VLA-rebuild-20260906/requirements.txt (line 13))
+  Downloading tomli-2.4.1-py3-none-any.whl.metadata (10 kB)
+Downloading av-15.0.0-cp310-cp310-manylinux_2_28_x86_64.whl (39.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 39.2/39.2 MB 4.7 MB/s  0:00:08
+Downloading peft-0.17.1-py3-none-any.whl (504 kB)
+Downloading uvicorn-0.34.3-py3-none-any.whl (62 kB)
+Downloading json_numpy-2.1.0-py3-none-any.whl (5.4 kB)
+Downloading safetensors-0.4.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (435 kB)
+Downloading numpy-1.26.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 4.1 MB/s  0:00:04
+Downloading scipy-1.15.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (40.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.6/40.6 MB 7.4 MB/s  0:00:05
+Downloading einops-0.8.1-py3-none-any.whl (64 kB)
+Downloading timm-1.0.12-py3-none-any.whl (2.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 7.9 MB/s  0:00:00
+Downloading mmengine-0.10.5-py3-none-any.whl (452 kB)
+Downloading pyarrow-20.0.0-cp310-cp310-manylinux_2_28_x86_64.whl (42.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.3/42.3 MB 4.2 MB/s  0:00:09
+Downloading h5py-3.12.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 3.3 MB/s  0:00:01
+Downloading accelerate-1.2.1-py3-none-any.whl (336 kB)
+Downloading mediapy-1.2.4-py3-none-any.whl (26 kB)
+Downloading transformers-4.51.3-py3-none-any.whl (10.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.4/10.4 MB 5.0 MB/s  0:00:02
+Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 3.5 MB/s  0:00:00
+Downloading hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 3.3 MB/s  0:00:01
+Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.1/3.1 MB 2.0 MB/s  0:00:01
+Downloading fastapi-0.141.1-py3-none-any.whl (131 kB)
+Downloading tensorboard-2.21.0-py3-none-any.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 3.6 MB/s  0:00:01
+Downloading grpcio-1.83.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (7.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 4.7 MB/s  0:00:01
+Downloading protobuf-7.36.1-cp310-abi3-manylinux2014_x86_64.whl (343 kB)
+Downloading tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
+Downloading absl_py-2.5.0-py3-none-any.whl (137 kB)
+Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading markdown-3.10.3-py3-none-any.whl (110 kB)
+Downloading opencv_python-4.11.0.86-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (63.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.0/63.0 MB 4.9 MB/s  0:00:12
+Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+Downloading pydantic_core-2.46.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 3.5 MB/s  0:00:00
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 770.3/770.3 kB 3.1 MB/s  0:00:00
+Downloading regex-2026.9.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (793 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 793.6/793.6 kB 3.8 MB/s  0:00:00
+Downloading starlette-1.6.0-py3-none-any.whl (75 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+Downloading idna-3.19-py3-none-any.whl (68 kB)
+Downloading tqdm-4.70.0-py3-none-any.whl (80 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
+Downloading addict-2.4.0-py3-none-any.whl (3.8 kB)
+Downloading ipython-8.39.0-py3-none-any.whl (831 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 831.8/831.8 kB 4.2 MB/s  0:00:00
+Downloading prompt_toolkit-3.0.53-py3-none-any.whl (392 kB)
+Downloading jedi-0.20.0-py2.py3-none-any.whl (4.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 4.4 MB/s  0:00:01
+Downloading parso-0.8.7-py2.py3-none-any.whl (107 kB)
+Downloading pexpect-4.9.0-py2.py3-none-any.whl (63 kB)
+Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 4.2 MB/s  0:00:00
+Downloading traitlets-5.16.1-py3-none-any.whl (86 kB)
+Downloading wcwidth-0.8.3-py3-none-any.whl (331 kB)
+Downloading decorator-5.3.1-py3-none-any.whl (10 kB)
+Downloading matplotlib-3.10.9-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (8.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.8/8.8 MB 5.7 MB/s  0:00:01
+Downloading contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (325 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.64.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 4.9 MB/s  0:00:01
+Downloading kiwisolver-1.5.1-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 4.2 MB/s  0:00:00
+Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading matplotlib_inline-0.2.2-py3-none-any.whl (9.5 kB)
+Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading charset_normalizer-3.5.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (261 kB)
+Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading stack_data-0.6.3-py3-none-any.whl (24 kB)
+Downloading asttokens-3.0.2-py3-none-any.whl (28 kB)
+Downloading executing-2.2.1-py2.py3-none-any.whl (28 kB)
+Downloading pure_eval-0.2.3-py3-none-any.whl (11 kB)
+Downloading termcolor-3.3.0-py3-none-any.whl (7.7 kB)
+Downloading yapf-0.43.0-py3-none-any.whl (256 kB)
+Downloading platformdirs-4.11.7-py3-none-any.whl (23 kB)
+Downloading tomli-2.4.1-py3-none-any.whl (14 kB)
+Installing collected packages: pure-eval, ptyprocess, addict, werkzeug, wcwidth, urllib3, typing-inspection, traitlets, tqdm, tomli, termcolor, tensorboard-data-server, six, safetensors, regex, pyyaml, pyparsing, pygments, pydantic-core, pyarrow, psutil, protobuf, platformdirs, pexpect, parso, numpy, mdurl, markdown, kiwisolver, idna, hf-xet, h11, grpcio, fonttools, executing, exceptiongroup, einops, decorator, cycler, click, charset_normalizer, certifi, av, asttokens, annotated-types, annotated-doc, absl-py, yapf, uvicorn, tensorboard, stack_data, scipy, requests, python-dateutil, pydantic, prompt_toolkit, opencv-python, matplotlib-inline, markdown-it-py, json_numpy, jedi, h5py, contourpy, anyio, starlette, rich, matplotlib, ipython, huggingface_hub, tokenizers, mmengine, mediapy, fastapi, accelerate, transformers, timm, peft
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.2.6
+    Uninstalling numpy-2.2.6:
+      Successfully uninstalled numpy-2.2.6
+
+Successfully installed absl-py-2.5.0 accelerate-1.2.1 addict-2.4.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 asttokens-3.0.2 av-15.0.0 certifi-2026.7.22 charset_normalizer-3.5.1 click-8.5.0 contourpy-1.3.2 cycler-0.12.1 decorator-5.3.1 einops-0.8.1 exceptiongroup-1.3.1 executing-2.2.1 fastapi-0.141.1 fonttools-4.64.0 grpcio-1.83.1 h11-0.16.0 h5py-3.12.1 hf-xet-1.6.0 huggingface_hub-0.36.2 idna-3.19 ipython-8.39.0 jedi-0.20.0 json_numpy-2.1.0 kiwisolver-1.5.1 markdown-3.10.3 markdown-it-py-4.2.0 matplotlib-3.10.9 matplotlib-inline-0.2.2 mdurl-0.1.2 mediapy-1.2.4 mmengine-0.10.5 numpy-1.26.3 opencv-python-4.11.0.86 parso-0.8.7 peft-0.17.1 pexpect-4.9.0 platformdirs-4.11.7 prompt_toolkit-3.0.53 protobuf-7.36.1 psutil-7.2.2 ptyprocess-0.7.0 pure-eval-0.2.3 pyarrow-20.0.0 pydantic-2.13.5 pydantic-core-2.46.5 pygments-2.21.0 pyparsing-3.3.2 python-dateutil-2.9.0.post0 pyyaml-6.0.3 regex-2026.9.3 requests-2.34.2 rich-15.0.0 safetensors-0.4.5 scipy-1.15.0 six-1.17.0 stack_data-0.6.3 starlette-1.6.0 tensorboard-2.21.0 tensorboard-data-server-0.7.2 termcolor-3.3.0 timm-1.0.12 tokenizers-0.21.4 tomli-2.4.1 tqdm-4.70.0 traitlets-5.16.1 transformers-4.51.3 typing-inspection-0.4.4 urllib3-2.7.0 uvicorn-0.34.3 wcwidth-0.8.3 werkzeug-3.1.8 yapf-0.43.0
+Collecting wandb
+  Downloading wandb-0.29.0-py3-none-manylinux_2_28_x86_64.whl.metadata (11 kB)
+Requirement already satisfied: click>=8.2.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from wandb) (8.5.0)
+Collecting opentelemetry-api>=1.43.0 (from wandb)
+  Downloading opentelemetry_api-1.44.0-py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: packaging in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from wandb) (26.3)
+Requirement already satisfied: platformdirs in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from wandb) (4.11.7)
+Requirement already satisfied: protobuf!=5.28.0,!=5.29.0,<8,>=5 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from wandb) (7.36.1)
+Requirement already satisfied: pydantic<3,>=2.6 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from wandb) (2.13.5)
+Requirement already satisfied: pyyaml in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from wandb) (6.0.3)
+Requirement already satisfied: requests<3,>=2.0.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from wandb) (2.34.2)
+Collecting sentry-sdk>=2.0.0 (from wandb)
+  Downloading sentry_sdk-2.68.1-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: typing-extensions<5,>=4.8 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from wandb) (4.16.0)
+Collecting xxhash>=3.0.0 (from wandb)
+  Downloading xxhash-4.0.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (17 kB)
+Requirement already satisfied: annotated-types>=0.6.0 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from pydantic<3,>=2.6->wandb) (0.8.0)
+Requirement already satisfied: pydantic-core==2.46.5 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from pydantic<3,>=2.6->wandb) (2.46.5)
+Requirement already satisfied: typing-inspection>=0.4.2 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from pydantic<3,>=2.6->wandb) (0.4.4)
+Requirement already satisfied: charset_normalizer<4,>=2 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from requests<3,>=2.0.0->wandb) (3.5.1)
+Requirement already satisfied: idna<4,>=2.5 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from requests<3,>=2.0.0->wandb) (3.19)
+Requirement already satisfied: urllib3<3,>=1.26 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from requests<3,>=2.0.0->wandb) (2.7.0)
+Requirement already satisfied: certifi>=2023.5.7 in /scratch/shahils/conda_envs/diwine-vla-rebuild/lib/python3.10/site-packages (from requests<3,>=2.0.0->wandb) (2026.7.22)
+Downloading wandb-0.29.0-py3-none-manylinux_2_28_x86_64.whl (29.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 29.8/29.8 MB 7.4 MB/s  0:00:04
+Downloading opentelemetry_api-1.44.0-py3-none-any.whl (60 kB)
+Downloading sentry_sdk-2.68.1-py3-none-any.whl (520 kB)
+Downloading xxhash-4.0.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (249 kB)
+Installing collected packages: xxhash, sentry-sdk, opentelemetry-api, wandb
+
+Successfully installed opentelemetry-api-1.44.0 sentry-sdk-2.68.1 wandb-0.29.0 xxhash-4.0.1
+torch 2.6.0+cu124
+cuda build 12.4
+transformers 4.51.3
+accelerate 1.2.1
+h5py 3.12.1
+peft 0.17.1
+numpy 1.26.3
+Completed: 2026-09-06T23:04:07-04:00

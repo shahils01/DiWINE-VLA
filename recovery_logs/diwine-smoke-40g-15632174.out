@@ -1,0 +1,34 @@
+Started: 2026-09-07T02:10:27-04:00
+Host: node2098.palmetto.clemson.edu
+Output: /scratch/shahils/diwine_runs/baseline_smoke/job-15632174
+Mon Sep  7 02:10:27 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:D8:00.0 Off |                    0 |
+| N/A   24C    P0             30W /  250W |     232MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            4115      G   /usr/libexec/Xorg                       106MiB |
+|    0   N/A  N/A           57447      G   /usr/libexec/Xorg                       106MiB |
++-----------------------------------------------------------------------------------------+
+02:11:09 | INFO | __main__ | Args: Namespace(models='2toINF/X-VLA-Pt', output_dir='/scratch/shahils/diwine_runs/baseline_smoke/job-15632174', action_mode=None, real_action_dim=None, max_action_dim=None, attention_type=None, gt_mha_num_base_heads=None, gt_mha_num_generators=None, train_metas_path='/scratch/shahils/openpi/datasets/Libero-XVLA-format/libero_meta.json', batch_size=1, num_views=3, num_workers=0, rlds_episode_shuffle_buffer=1024, rlds_max_samples_per_episode=0, disable_rlds_step_shuffle=False, learning_rate=0.0001, learning_coef=1.0, weight_decay=0.01, betas=(0.9, 0.95), max_grad_norm=1.0, iters=2, freeze_steps=1, warmup_steps=1, use_cosine_decay=False, min_lr_ratio=0.1, train_vlm_pre=False, vlm_pre_train_start_step=-1, vlm_pre_train_steps=-1, save_interval=2, log_interval=1, seed=0, use_future_prediction=True, future_offset_steps=1, predictor_hidden_dim=1024, num_future_tokens=4, num_future_samples=2, flow_sampling_steps=16, future_loss_weight=1.0, future_nll_weight=0.5, future_kl_weight=0.2, future_horizon_steps=2, future_latent_dim=1024, future_hidden_dim=1024, future_inject_layer_idx=-1, use_future_contrastive=False, contrastive_loss_weight=0.0, contrastive_num_layers=3, contrastive_proj_dim=256, contrastive_temperature=0.07)
+02:13:29 | INFO | __main__ | Model parameters: attention_type=mha total=879482456 trainable=879482456 action_head=308775512 attention=100761600
+use action mode: ee6d
+== dataset libero with 5616 trajs
+02:13:36 | INFO | __main__ | 🚀 Start training for 2 iterations | world_size=1
+02:13:43 | INFO | __main__ | [0/2] loss=118.2256 action=117.4976 rssm=0.7280 nll=0.7226 kl=0.0054 ctr=0.0000 lr_core=0.00e+00 lr_vlm_pre=0.00e+00 lr_vlm_post=1.00e-04 (6.29s/it) USED_CPU=2.50e+00 GB USED_GPU=1.03e+01 GB 
+02:13:43 | INFO | __main__ | [1/2] loss=84.6416 action=83.9184 rssm=0.7232 nll=0.7197 kl=0.0035 ctr=0.0000 lr_core=1.00e-04 lr_vlm_pre=0.00e+00 lr_vlm_post=1.00e-04 (0.29s/it) USED_CPU=2.52e+00 GB USED_GPU=1.03e+01 GB 
+💾 Saving model to /scratch/shahils/diwine_runs/baseline_smoke/job-15632174/ckpt-2
+Checkpoint bytes: 3675126991
+Completed: 2026-09-07T02:13:52-04:00
