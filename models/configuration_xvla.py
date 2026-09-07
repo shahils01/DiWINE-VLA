@@ -46,6 +46,9 @@ class XVLAConfig(PretrainedConfig):
         max_len_seq: int = 512,
         use_hetero_proj: bool = False,
         soft_prompt_length: int = 32,
+        attention_type: str = "mha",
+        gt_mha_num_base_heads: int = 4,
+        gt_mha_num_generators: int = 8,
 
         # === Action & proprio ===
         max_action_dim: int = 20,  # Maximum action dimension for padding (used by "auto" action mode)
@@ -94,6 +97,17 @@ class XVLAConfig(PretrainedConfig):
         self.max_len_seq = max_len_seq
         self.use_hetero_proj = use_hetero_proj
         self.soft_prompt_length = soft_prompt_length
+        if attention_type not in {"mha", "gt_mha_residual"}:
+            raise ValueError(f"Unsupported attention_type: {attention_type}")
+        if gt_mha_num_base_heads <= 0:
+            raise ValueError("gt_mha_num_base_heads must be positive")
+        if gt_mha_num_generators <= 0:
+            raise ValueError("gt_mha_num_generators must be positive")
+        if attention_type == "gt_mha_residual" and num_heads % gt_mha_num_base_heads:
+            raise ValueError("num_heads must be divisible by gt_mha_num_base_heads")
+        self.attention_type = attention_type
+        self.gt_mha_num_base_heads = gt_mha_num_base_heads
+        self.gt_mha_num_generators = gt_mha_num_generators
 
         # Action/proprioception settings
         self.num_actions = num_actions

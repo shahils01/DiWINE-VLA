@@ -21,3 +21,17 @@ accelerate launch --num_processes 4 --mixed_precision bf16 train.py \
  --num_future_samples 8 \
 
 
+GT-MHA residual ablation:
+
+Keep the standard MHA command unchanged for the baseline. For the matched
+GT-MHA run, add only:
+
+ --attention_type gt_mha_residual \
+ --gt_mha_num_base_heads 4 \
+ --gt_mha_num_generators 8 \
+
+The default attention type remains `mha`. When loading a standard MHA
+checkpoint into GT-MHA, the loader averages adjacent pretrained Q/K/V heads
+into the four shared bases and copies the output projection. Generator
+parameters use the native GT-MHA initialization.
+

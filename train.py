@@ -77,6 +77,14 @@ def get_args_parser():
     parser.add_argument("--action_mode", type=str, default=None, help="Override pretrained config action_mode.")
     parser.add_argument("--real_action_dim", type=int, default=None, help="Override real action dim for action_mode=auto.")
     parser.add_argument("--max_action_dim", type=int, default=None, help="Override max action dim for action_mode=auto.")
+    parser.add_argument(
+        "--attention_type",
+        choices=("mha", "gt_mha_residual"),
+        default=None,
+        help="Override temporal/action transformer attention. Existing checkpoints default to MHA.",
+    )
+    parser.add_argument("--gt_mha_num_base_heads", type=int, default=None)
+    parser.add_argument("--gt_mha_num_generators", type=int, default=None)
 
     # Data
     parser.add_argument("--train_metas_path", type=str, required=True, help="Path to training metadata")
@@ -259,8 +267,30 @@ def main(args):
         model_kwargs["real_action_dim"] = args.real_action_dim
     if args.max_action_dim is not None:
         model_kwargs["max_action_dim"] = args.max_action_dim
+    if args.attention_type is not None:
+        model_kwargs["attention_type"] = args.attention_type
+    if args.gt_mha_num_base_heads is not None:
+        model_kwargs["gt_mha_num_base_heads"] = args.gt_mha_num_base_heads
+    if args.gt_mha_num_generators is not None:
+        model_kwargs["gt_mha_num_generators"] = args.gt_mha_num_generators
     model = XVLA.from_pretrained(args.models, **model_kwargs)
     processor = XVLAProcessor.from_pretrained(args.models)
+    total_params = sum(parameter.numel() for parameter in model.parameters())
+    trainable_params = sum(parameter.numel() for parameter in model.parameters() if parameter.requires_grad)
+    action_head_params = sum(parameter.numel() for parameter in model.transformer.parameters())
+    attention_params = sum(
+        parameter.numel()
+        for block in model.transformer.blocks
+        for parameter in block.attn.parameters()
+    )
+    logger.info(
+        "Model parameters: attention_type=%s total=%d trainable=%d action_head=%d attention=%d",
+        model.config.attention_type,
+        total_params,
+        trainable_params,
+        action_head_params,
+        attention_params,
+    )
 
     # Iterable dataloader (don't wrap with prepare)
     train_dataloader = create_dataloader(

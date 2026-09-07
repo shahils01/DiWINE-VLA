@@ -24,6 +24,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from .gt_mha_attention import LieGeneratedMetricAttention
+
 
 # ------------------------------- Small utils ----------------------------------
 
@@ -159,6 +161,131 @@ class Attention(nn.Module):
         return x
 
 
+class GTResidualAttention(LieGeneratedMetricAttention):
+    """Paper GT-MHA residual attention with MHA checkpoint conversion.
+
+    When a standard DiWINE checkpoint is loaded, adjacent MHA heads are
+    averaged into the requested query/key/value bases. The output projection
+    is preserved exactly. GT-MHA generator parameters retain their native
+    initialization.
+    """
+
+    def __init__(
+        self,
+        dim: int,
+        num_heads: int,
+        num_base_heads: int = 4,
+        num_generators: int = 8,
+        attn_drop: float = 0.0,
+    ) -> None:
+        if dim % num_heads:
+            raise ValueError("dim must be divisible by num_heads")
+        if num_heads % num_base_heads:
+            raise ValueError("num_heads must be divisible by num_base_heads")
+        head_dim = dim // num_heads
+        super().__init__(
+            d_model=dim,
+            num_heads=num_heads,
+            head_dim=head_dim,
+            num_generators=num_generators,
+            dropout=attn_drop,
+            bias=True,
+            generator_type="full",
+            generator_mixing="softmax",
+            use_sdpa=True,
+            causal=False,
+            stabilize_generators=False,
+            normalize_generators=False,
+            head_generator_symmetric_cap=None,
+            theta_init_scale=4.0,
+            generator_init_scale=0.02,
+            base_dim=head_dim,
+            value_dim=head_dim,
+            metric_mode="residual",
+            theta_init="balanced_simplex",
+            logit_scale_mode="sqrt_dim",
+            learn_head_temperature=False,
+            value_transform="lie",
+            num_base_heads=num_base_heads,
+            num_value_base_heads=num_base_heads,
+            fuse_base_qkv=True,
+            fold_value_transform_into_output=True,
+            sdpa_gqa_mode="auto",
+        )
+
+    def _average_mha_heads(self, tensor: torch.Tensor) -> torch.Tensor:
+        tail = tensor.shape[1:]
+        grouped = tensor.reshape(
+            self.num_base_heads,
+            self.generated_heads_per_base,
+            self.head_dim,
+            *tail,
+        )
+        return grouped.mean(dim=1).reshape(self.num_base_heads * self.head_dim, *tail)
+
+    def _load_from_state_dict(
+        self,
+        state_dict,
+        prefix,
+        local_metadata,
+        strict,
+        missing_keys,
+        unexpected_keys,
+        error_msgs,
+    ):
+        qkv_weight_key = prefix + "qkv.weight"
+        qkv_bias_key = prefix + "qkv.bias"
+        proj_weight_key = prefix + "proj.weight"
+        proj_bias_key = prefix + "proj.bias"
+
+        if qkv_weight_key in state_dict and prefix + "q_proj.weight" not in state_dict:
+            q_weight, k_weight, v_weight = state_dict.pop(qkv_weight_key).chunk(3, dim=0)
+            state_dict[prefix + "q_proj.weight"] = self._average_mha_heads(q_weight)
+            state_dict[prefix + "k_proj.weight"] = self._average_mha_heads(k_weight)
+            state_dict[prefix + "v_proj.weight"] = self._average_mha_heads(v_weight)
+
+        if qkv_bias_key in state_dict and prefix + "q_proj.bias" not in state_dict:
+            q_bias, k_bias, v_bias = state_dict.pop(qkv_bias_key).chunk(3, dim=0)
+            state_dict[prefix + "q_proj.bias"] = self._average_mha_heads(q_bias)
+            state_dict[prefix + "k_proj.bias"] = self._average_mha_heads(k_bias)
+            state_dict[prefix + "v_proj.bias"] = self._average_mha_heads(v_bias)
+
+        if proj_weight_key in state_dict and prefix + "out_proj.weight" not in state_dict:
+            state_dict[prefix + "out_proj.weight"] = state_dict.pop(proj_weight_key)
+        if proj_bias_key in state_dict and prefix + "out_proj.bias" not in state_dict:
+            state_dict[prefix + "out_proj.bias"] = state_dict.pop(proj_bias_key)
+
+        super()._load_from_state_dict(
+            state_dict,
+            prefix,
+            local_metadata,
+            strict,
+            missing_keys,
+            unexpected_keys,
+            error_msgs,
+        )
+
+
+def build_attention(
+    hidden_size: int,
+    num_heads: int,
+    attention_type: str,
+    gt_mha_num_base_heads: int,
+    gt_mha_num_generators: int,
+) -> nn.Module:
+    if attention_type == "mha":
+        return Attention(hidden_size, num_heads=num_heads, qkv_bias=True, attn_drop=0.1)
+    if attention_type == "gt_mha_residual":
+        return GTResidualAttention(
+            hidden_size,
+            num_heads=num_heads,
+            num_base_heads=gt_mha_num_base_heads,
+            num_generators=gt_mha_num_generators,
+            attn_drop=0.1,
+        )
+    raise ValueError(f"Unsupported attention_type: {attention_type}")
+
+
 # ------------------------------- Utilities -----------------------------------
 
 def basic_init(module: nn.Module) -> None:
@@ -255,11 +382,25 @@ class TransformerBlock(nn.Module):
     Standard Transformer block (pre-LN): LN → MHSA → residual, LN → MLP → residual.
     """
 
-    def __init__(self, hidden_size: int, num_heads: int, mlp_ratio: float = 4.0) -> None:
+    def __init__(
+        self,
+        hidden_size: int,
+        num_heads: int,
+        mlp_ratio: float = 4.0,
+        attention_type: str = "mha",
+        gt_mha_num_base_heads: int = 4,
+        gt_mha_num_generators: int = 8,
+    ) -> None:
         super().__init__()
         self.norm1 = nn.LayerNorm(hidden_size)
         self.norm2 = nn.LayerNorm(hidden_size)
-        self.attn = Attention(hidden_size, num_heads=num_heads, qkv_bias=True, attn_drop=0.1)
+        self.attn = build_attention(
+            hidden_size,
+            num_heads,
+            attention_type,
+            gt_mha_num_base_heads,
+            gt_mha_num_generators,
+        )
         self.mlp = Mlp(
             in_features=hidden_size,
             hidden_features=int(hidden_size * mlp_ratio),
@@ -304,6 +445,9 @@ class SoftPromptedTransformer(nn.Module):
         len_soft_prompts: int = 32,
         max_len_seq: int = 512,
         use_hetero_proj: bool = False,
+        attention_type: str = "mha",
+        gt_mha_num_base_heads: int = 4,
+        gt_mha_num_generators: int = 8,
     ) -> None:
         super().__init__()
         self.hidden_size = hidden_size
@@ -311,9 +455,20 @@ class SoftPromptedTransformer(nn.Module):
         self.dim_time = dim_time
         self.len_soft_prompts = len_soft_prompts
         self.use_hetero_proj = use_hetero_proj
+        self.attention_type = attention_type
 
         self.blocks = nn.ModuleList(
-            [TransformerBlock(hidden_size, num_heads, mlp_ratio=mlp_ratio) for _ in range(depth)]
+            [
+                TransformerBlock(
+                    hidden_size,
+                    num_heads,
+                    mlp_ratio=mlp_ratio,
+                    attention_type=attention_type,
+                    gt_mha_num_base_heads=gt_mha_num_base_heads,
+                    gt_mha_num_generators=gt_mha_num_generators,
+                )
+                for _ in range(depth)
+            ]
         )
 
         if use_hetero_proj:

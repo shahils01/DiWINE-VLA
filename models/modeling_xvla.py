@@ -259,6 +259,9 @@ class XVLA(PreTrainedModel):
             dim_time=config.dim_time,
             max_len_seq=config.max_len_seq,
             use_hetero_proj=config.use_hetero_proj,
+            attention_type=config.attention_type,
+            gt_mha_num_base_heads=config.gt_mha_num_base_heads,
+            gt_mha_num_generators=config.gt_mha_num_generators,
         )
 
         # Deferred FastAPI app
